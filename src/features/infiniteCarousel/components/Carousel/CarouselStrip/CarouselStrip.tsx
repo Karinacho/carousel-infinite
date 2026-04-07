@@ -1,23 +1,21 @@
-import { type RefObject, type ReactNode } from "react";
+import { type RefObject } from "react";
 import { type CarouselItem } from "@/features/infiniteCarousel/types";
 import styles from "./CarouselStrip.module.css";
 import CarouselCard from "../CarouselCard/CarouselCard";
 import { itemIndexForSlot } from "@/features/infiniteCarousel/libs/virtualWindow";
 
-type CarouselStripProps<T = unknown> = {
+type CarouselStripProps = {
   stripSlots: readonly number[];
   virtualIndex: number;
-  items: readonly CarouselItem<T>[];
+  items: readonly CarouselItem[];
   slideRefs: RefObject<(HTMLDivElement | null)[]>;
-  renderItem?: (item: CarouselItem<T>, indexInStrip: number) => ReactNode;
 };
-const CarouselStrip = <T,>({
+const CarouselStrip = ({
   stripSlots,
   virtualIndex,
   items,
   slideRefs,
-  renderItem,
-}: CarouselStripProps<T>) => {
+}: CarouselStripProps) => {
   return (
     <div className={styles.strip}>
       {stripSlots.map((slot) => {
@@ -30,7 +28,6 @@ const CarouselStrip = <T,>({
             slot={slot}
             key={slot}
             slideRefs={slideRefs}
-            renderItem={renderItem}
           />
         );
       })}

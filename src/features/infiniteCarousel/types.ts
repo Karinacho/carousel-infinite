@@ -1,5 +1,3 @@
-import type { ReactNode } from "react";
-
 export type CarouselItem<T = unknown> = {
   /** Unique key for React list reconciliation */
   key: string;
@@ -14,7 +12,4 @@ export type InfiniteImageCarouselProps<T = unknown> = {
   items: readonly CarouselItem<T>[];
   /** Odd number of DOM slots (5 or 7 recommended). Default 5. */
   windowSize?: number;
-  className?: string;
-  /** Override default <img> rendering */
-  renderItem?: (item: CarouselItem<T>, indexInStrip: number) => ReactNode;
 };

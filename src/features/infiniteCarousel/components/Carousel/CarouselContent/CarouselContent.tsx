@@ -4,12 +4,10 @@ import { useCarouselRuntime } from "@/features/infiniteCarousel/hooks/useCarouse
 import CarouselStrip from "../CarouselStrip/CarouselStrip";
 import styles from "./CarouselContent.module.css";
 
-export function CarouselContent<T = unknown>({
+export const CarouselContent = ({
   items,
   windowSize: windowSizeProp = 5,
-  className,
-  renderItem,
-}: InfiniteImageCarouselProps<T>) {
+}: InfiniteImageCarouselProps) => {
   const windowSize = assertOddWindowSize(windowSizeProp);
 
   const { viewportRef, slideRefs, virtualIndex, stripSlots } = useCarouselRuntime({
@@ -19,7 +17,7 @@ export function CarouselContent<T = unknown>({
   });
 
   return (
-    <div className={`${styles.root} ${className ?? ""}`}>
+    <div className={styles.root}>
       <div
         ref={viewportRef}
         className={styles.viewport}
@@ -27,14 +25,13 @@ export function CarouselContent<T = unknown>({
         role="region"
         aria-label="Image carousel"
       >
-        <CarouselStrip<T>
+        <CarouselStrip
           stripSlots={stripSlots}
           virtualIndex={virtualIndex}
           items={items}
           slideRefs={slideRefs}
-          renderItem={renderItem}
         />
       </div>
     </div>
   );
-}
+};

@@ -1,18 +1,17 @@
 import { CarouselItem } from "@/features/infiniteCarousel/types";
-import { type RefObject, type ReactNode } from "react";
+import { type RefObject } from "react";
 import styles from "./CarouselCard.module.css";
-type CarouselCardProps<T = unknown> = {
-  item: CarouselItem<T>;
+
+type CarouselCardProps = {
+  item: CarouselItem;
   slot: number;
   slideRefs: RefObject<(HTMLDivElement | null)[]>;
-  renderItem?: (item: CarouselItem<T>, indexInStrip: number) => ReactNode;
 };
-const CarouselCard = <T,>({
+const CarouselCard = ({
   item,
   slot,
-  slideRefs,
-  renderItem,
-}: CarouselCardProps<T>) => {
+  slideRefs
+}: CarouselCardProps) => {
   return (
     <div
       key={slot}
@@ -22,9 +21,6 @@ const CarouselCard = <T,>({
       className={styles.slide}
     >
       <div className={styles.frame}>
-        {renderItem ? (
-          renderItem(item, slot)
-        ) : (
           <img
             className={styles.image}
             src={item.src}
@@ -33,7 +29,6 @@ const CarouselCard = <T,>({
             decoding="async"
             draggable={false}
           />
-        )}
       </div>
     </div>
   );
