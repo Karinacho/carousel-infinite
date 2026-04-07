@@ -1,0 +1,9 @@
+.strip {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: var(--carousel-gap, clamp(8px, 2vw, 16px));
+  padding: var(--carousel-pad-y, 12px)
+    var(--carousel-pad-x, clamp(12px, 4vw, 32px));
+  min-height: min(70vh, 640px);
+}

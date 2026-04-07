@@ -1,0 +1,30 @@
+.slide {
+  flex: 0 0 var(--slide-width, min(85vw, 420px));
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.frame {
+  width: 100%;
+  height: min(70vh, 640px);
+  max-height: min(70vh, 640px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, currentColor 6%, transparent);
+  border-radius: 12px;
+  overflow: hidden;
+}
